@@ -95,7 +95,23 @@ return packer.startup(function(use)
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
+
+	-- Coc
 	use({ "neoclide/coc.nvim", branch = "release" })
+
+	-- DressingLua
+	use({ "stevearc/dressing.nvim" })
+
+	-- Surround_nvim
+	use({
+		"kylechui/nvim-surround",
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	})
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
