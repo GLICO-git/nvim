@@ -112,6 +112,30 @@ return packer.startup(function(use)
 			})
 		end,
 	})
+
+	-- nvim-dap
+	use({
+		"mfussenegger/nvim-dap",
+		config = function()
+			require("user.dap")
+		end,
+	})
+
+	use({
+		"rcarriga/nvim-dap-ui",
+		config = function()
+			require("dapui").setup()
+		end,
+		requires = { "mfussenegger/nvim-dap" },
+	})
+
+	use({
+		"theHamsta/nvim-dap-virtual-text",
+		config = function()
+			require("nvim-dap-virtual-text").setup()
+		end,
+		requires = { "mfussenegger/nvim-dap" },
+	})
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
