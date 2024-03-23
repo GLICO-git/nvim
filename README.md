@@ -4,7 +4,7 @@ $ sudo apt update
 $ curl -fsSL https://deb.nodesource.com/setup_21.x | sudo -E bash - &&\
 sudo apt-get install -y nodejs
 
-$ sudo apt install -y git make cmake gcc g++ clang-format libtool libtool-bin autoconf automake pkg-config unzip zsh bat
+$ sudo apt install -y git make cmake gcc g++ clang-format libtool libtool-bin autoconf automake pkg-config unzip zsh bat gettext
 
 $ mkdir -p ~/.local/bin
 
@@ -23,7 +23,7 @@ $ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh
 $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 ##### autojump
-$ git clone git://github.com/wting/autojump.git
+$ git clone https://github.com/wting/autojump.git
 $ cd autojump
 $ ./install.py or ./uninstall.py
 
@@ -42,13 +42,6 @@ $ git checkout v0.9.2
 $ make CMAKE_BUILD_TYPE=RelWithDebInfo
 
 $ sudo make install
-
-
-### Well known error
-$ sudo apt install gettext
-
-use ({ "nvim-neotest/nvim-nio" })
-  -> in plugin.lua
 
 ### After install nvim
 
