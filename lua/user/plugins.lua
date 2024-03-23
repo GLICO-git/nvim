@@ -114,6 +114,7 @@ return packer.startup(function(use)
 	})
 
 	-- nvim-dap
+	use ({ "nvim-neotest/nvim-nio" })
 	use({
 		"mfussenegger/nvim-dap",
 		config = function()
