@@ -13,6 +13,17 @@ $ ln -s /usr/bin/batcat ~/.local/bin/bat
 ##### oh-my-zsh
 $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+### Install Font
+```
+#/bin/bash
+# install DroidSansMono Nerd Font --> u can choose another at: https://www.nerdfonts.com/font-downloads
+echo "[-] Download fonts [-]"
+echo "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/DroidSansMono.zip"
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/DroidSansMono.zip
+unzip DroidSansMono.zip -d ~/.local/share/fonts
+fc-cache -fv
+echo "done!"
+```
 ##### powerlevel10k
 $ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
@@ -23,9 +34,9 @@ $ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh
 $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 ##### autojump
-$ git clone https://github.com/wting/autojump.git
-$ cd autojump
-$ ./install.py or ./uninstall.py
+$ git clone https://github.com/wting/autojump.git $ZSH_CUSTOM/plugins/autojump
+$ cd $ZSH_CUSTOM/plugins/autojump
+$ ./install.py
 
 ##### zsh-bat
 git clone https://github.com/fdellwing/zsh-bat.git $ZSH_CUSTOM/plugins/zsh-bat
@@ -40,6 +51,26 @@ $ cd neovim
 $ git checkout v0.9.2
 
 $ make CMAKE_BUILD_TYPE=RelWithDebInfo
+
+# Trouble Shooting
+### Build error for RelWithDebInfo
+1. Edit CMakeLists.txt
+```
+# CMakeLists.txt
+
+set(CMAKE_CONFIGURATION_TYPES "Debug;Release;MinSizeRel;RelWithDebInfo" CACHE STRING "Possible build types")
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE "RelWithDebInfo" CACHE STRING "Choose the type of build." FORCE)
+endif()
+
+message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
+
+```
+2. Config .deps/Cmake
+```
+cd .deps
+cmake -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=RelWithDebInfo /home/glico/neovim/cmake.deps
+```
 
 $ sudo make install
 
