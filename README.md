@@ -24,22 +24,23 @@ unzip DroidSansMono.zip -d ~/.local/share/fonts
 fc-cache -fv
 echo "done!"
 ```
+
 ##### powerlevel10k
-$ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+1. $ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 ##### zsh-autosuggestion
-$ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+1. $ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 ##### zsh-syntaxhighlighting
-$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+1. $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 ##### autojump
-$ git clone https://github.com/wting/autojump.git $ZSH_CUSTOM/plugins/autojump
-$ cd $ZSH_CUSTOM/plugins/autojump
-$ ./install.py
+1. $ git clone https://github.com/wting/autojump.git ${ZSH_CUSTOM}/plugins/autojump
+2. $ cd ${ZSH_CUSTOM}/plugins/autojump
+3. $ ./install.py
 
 ##### zsh-bat
-git clone https://github.com/fdellwing/zsh-bat.git $ZSH_CUSTOM/plugins/zsh-bat
+1. git clone https://github.com/fdellwing/zsh-bat.git ${ZSH_CUSTOM}/plugins/zsh-bat
 
 
 # How to Install Nvim 0.9.2
@@ -94,17 +95,19 @@ uncomment all
 
 ### cf) .zshrc
 ```
-  alias vi=nvim
-    alias cat=batcat
-    function chpwd(){
-            emulate -L zsh
-            ls
-    }
-    source /home/ssu-20201750/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    source /home/ssu-20201750/.oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-    [[ -s /home/ssu-20201750/.autojump/etc/profile.d/autojump.sh ]] && source /home/ssu-20201750/.autojump/etc/profile.d/autojump.sh
+alias vi=nvim
+alias cat=batcat
+function chpwd(){
+    emulate -L zsh
+    ls
+}
+source ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ${ZSH_CUSTOM}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+[[ -s ${HOME}/.autojump/etc/profile.d/autojump.sh ]] && source ${HOME}/.autojump/etc/profile.d/autojump.sh
     autoload -U compinit && compinit -u
     
     [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 ```
+### Reboot your machine
+$ sudo reboot
