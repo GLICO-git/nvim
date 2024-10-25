@@ -8,6 +8,18 @@ local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 local diagnostics = null_ls.builtins.diagnostics
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local formatting_enabled = false
+
+local function toggle_formatting()
+  formatting_enabled = not formatting_enabled
+  if formatting_enabled then
+    print("Formatting enabled")
+  else 
+    print("Formatting disabled")
+  end
+end
+
+vim.api.nvim_create_user_command("ToggleFormatting", toggle_formatting, {})
 null_ls.setup({
 	debug = false,
 	sources = {
@@ -25,9 +37,11 @@ null_ls.setup({
 				group = augroup,
 				buffer = bufnr,
 				callback = function()
+          if formatting_enabled then
 					-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
 					-- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
-					vim.lsp.buf.format({ async = false })
+            vim.lsp.buf.format({ async = false })
+          end
 				end,
 			})
 		end
