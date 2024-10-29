@@ -22,6 +22,7 @@ echo "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/DroidSans
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/DroidSansMono.zip
 unzip DroidSansMono.zip -d ~/.local/share/fonts
 fc-cache -fv
+# sudo apt-get install -y ttf-ancient-fonts
 echo "done!"
 ```
 
@@ -70,7 +71,7 @@ message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 2. Config .deps/Cmake
 ```
 cd .deps
-cmake -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=RelWithDebInfo /home/glico/neovim/cmake.deps
+cmake -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=RelWithDebInfo ${HOME}/neovim/cmake.deps
 ```
 
 $ sudo make install
