@@ -4,7 +4,7 @@ $ sudo apt update
 $ curl -fsSL https://deb.nodesource.com/setup_21.x | sudo -E bash - &&\
 sudo apt-get install -y nodejs
 
-$ sudo apt install -y git make cmake gcc g++ clang-format libtool libtool-bin autoconf automake pkg-config unzip zsh bat gettext
+$ sudo apt install -y git make cmake gcc g++ clang-format libtool libtool-bin autoconf automake pkg-config unzip zsh bat gettext clangd
 
 $ mkdir -p ~/.local/bin
 
@@ -86,6 +86,8 @@ $ nvim plugins.lua
 
 :w (packer install automatic)
 :TSUpdate c lua
+:CocInstall coc-clangd
+:Mason Install
 :q 
 
 
@@ -93,6 +95,9 @@ $ nvim ~/.config/nvim/init.lua
 
 uncomment all
 
+### add Dependencies
+pip3 install flake8
+pip3 install black
 
 ### cf) .zshrc
 ```
