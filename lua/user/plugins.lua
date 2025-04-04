@@ -136,6 +136,9 @@ return packer.startup(function(use)
 		end,
 		requires = { "mfussenegger/nvim-dap" },
 	})
+		
+	use({"tamarin-prover/editors"})
+		
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
