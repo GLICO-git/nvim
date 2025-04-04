@@ -10,7 +10,7 @@ sudo apt-get install -y nodejs
 
 # Install essential packages
 echo "Installing essential packages..."
-sudo apt install -y git make cmake gcc g++ clang-format libtool libtool-bin autoconf automake pkg-config unzip zsh bat gettext
+sudo apt install -y git make cmake gcc g++ clang-format libtool libtool-bin autoconf automake pkg-config unzip zsh bat gettext curl python3-pip
 
 # Setup bat symlink
 echo "Setting up bat symlink..."
