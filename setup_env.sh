@@ -44,27 +44,16 @@ cd ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/autojump
 cd ~
 git clone https://github.com/fdellwing/zsh-bat.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-bat
 
-# Clone Neovim repository and build Neovim
-echo "Cloning and building Neovim..."
-git clone https://github.com/neovim/neovim.git
-cd neovim
-git checkout v0.9.2
-make CMAKE_BUILD_TYPE=RelWithDebInfo
-
-# Modify CMakeLists.txt if needed for build issues
-sed -i 's|set(CMAKE_BUILD_TYPE .*)|set(CMAKE_BUILD_TYPE "RelWithDebInfo" CACHE STRING "Choose the type of build." FORCE)|' CMakeLists.txt
-
-# Configure dependencies
-cd .deps
-cmake -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=RelWithDebInfo ../cmake.deps
-cd ..
-sudo make install
-cd ~
-
 # Set up nvim configuration
 echo "Configuring Neovim..."
 cd ~/.config/
-git clone https://github.com/GLICO-git/nvim && cd nvim/lua/user
+git clone https://github.com/GLICO-git/nvim
+cd ./nvim
+./nvim.appimage --appimage-extract
+cp squashfs-root/usr/bin/nvim /usr/local/bin/
+cp -r squashfs-root/usr/share/nvim /usr/local/share/
+cp squashfs-root/usr/man/man1/nvim.1.gz /usr/local/man/man1/
+cd ~/.config/nvim/lua/user
 #nvim plugins.lua -c "PackerInstall" -c "TSUpdate c lua" -c "q"
 #nvim ~/.config/nvim/init.lua
 
