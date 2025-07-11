@@ -49,10 +49,11 @@ echo "Configuring Neovim..."
 cd ~/.config/
 git clone https://github.com/GLICO-git/nvim
 cd ./nvim
+sudo chmod u+x ./nvim.appimage
 ./nvim.appimage --appimage-extract
-cp squashfs-root/usr/bin/nvim /usr/local/bin/
-cp -r squashfs-root/usr/share/nvim /usr/local/share/
-cp squashfs-root/usr/man/man1/nvim.1.gz /usr/local/man/man1/
+sudo cp squashfs-root/usr/bin/nvim /usr/local/bin/
+sudo cp -r squashfs-root/usr/share/nvim /usr/local/share/
+sudo rm -rf ./squashfs-root
 cd ~/.config/nvim/lua/user
 #nvim plugins.lua -c "PackerInstall" -c "TSUpdate c lua" -c "q"
 #nvim ~/.config/nvim/init.lua
